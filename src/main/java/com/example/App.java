@@ -1,7 +1,7 @@
 package com.example;
 
-import java.io.File;
-import java.io.FileInputStream;
+/*import java.io.File;
+import java.io.FileInputStream;*/
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
@@ -34,7 +34,8 @@ public final class App {
      */
     public static void main(String[] args) throws Exception {
         Properties properties = new Properties();
-        properties.load(new FileInputStream(new File("src/main/resources/vars.properties")));
+        /*properties.load(new FileInputStream(new File("src/main/resources/vars.properties")));*/
+        properties.load(App.class.getClassLoader().getResourceAsStream("vars.properties"));
         port(PUERTO);
         get("/entornos", (req, res) -> "En el ambiente " + properties.getProperty("AMBIENTE"));
     }
